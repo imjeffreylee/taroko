@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/imjeffreylee/taroko/static/css/main.542be799.chunk.css",
+    "main.js": "/imjeffreylee/taroko/static/js/main.e26b4768.chunk.js",
+    "main.js.map": "/imjeffreylee/taroko/static/js/main.e26b4768.chunk.js.map",
+    "runtime-main.js": "/imjeffreylee/taroko/static/js/runtime-main.4e62f1f5.js",
+    "runtime-main.js.map": "/imjeffreylee/taroko/static/js/runtime-main.4e62f1f5.js.map",
+    "static/js/2.53bcf556.chunk.js": "/imjeffreylee/taroko/static/js/2.53bcf556.chunk.js",
+    "static/js/2.53bcf556.chunk.js.map": "/imjeffreylee/taroko/static/js/2.53bcf556.chunk.js.map",
+    "static/js/3.cf5b6a9b.chunk.js": "/imjeffreylee/taroko/static/js/3.cf5b6a9b.chunk.js",
+    "static/js/3.cf5b6a9b.chunk.js.map": "/imjeffreylee/taroko/static/js/3.cf5b6a9b.chunk.js.map",
+    "index.html": "/imjeffreylee/taroko/index.html",
+    "static/css/main.542be799.chunk.css.map": "/imjeffreylee/taroko/static/css/main.542be799.chunk.css.map",
+    "static/js/2.53bcf556.chunk.js.LICENSE.txt": "/imjeffreylee/taroko/static/js/2.53bcf556.chunk.js.LICENSE.txt",
+    "static/media/sort-button.7cec2c9c.png": "/imjeffreylee/taroko/static/media/sort-button.7cec2c9c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4e62f1f5.js",
+    "static/js/2.53bcf556.chunk.js",
+    "static/css/main.542be799.chunk.css",
+    "static/js/main.e26b4768.chunk.js"
+  ]
+}
