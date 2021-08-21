@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import Loading from './Loading';
 import Popup from './Popup';
-import './styles/navbar.css';
+import './styles/navbar.scss';
 import { createContext } from 'react';
 
 interface Props {

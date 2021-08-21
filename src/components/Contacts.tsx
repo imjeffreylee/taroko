@@ -34,7 +34,7 @@ const Contacts = ({ contactList }: Props) => {
 
   useEffect(() => {
     sortList(contactList, sortBy, sortDirection);
-  }, [sortBy, sortDirection, contactList]);
+  }, [sortedList, sortBy, sortDirection, contactList]);
 
   return (
     <div>

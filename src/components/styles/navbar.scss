@@ -1,0 +1,22 @@
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 2px solid #000;
+
+  li {
+    list-style: none;
+    font-weight: 400;
+    margin: 0 20px;
+  }
+
+  nav {
+    width: 80%;
+  }
+
+  ul {
+    display: flex;
+    width: 100%;
+  }
+}
