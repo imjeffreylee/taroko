@@ -1,0 +1,31 @@
+.contact-item-container {
+  padding: 15px;
+  position: relative;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  width: 70px;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.contact-item-button {
+  margin: 5px 0;
+}
+
+.contact-info__icon-and-name {
+  display: flex;
+  align-items: center;
+}
+
+.contact-info__icon-and-name span {
+  margin-left: 5px;
+  font-size: 24px;
+}
+
+.contact-info p {
+  font-size: 16px;
+}
