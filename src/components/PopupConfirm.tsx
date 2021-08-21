@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { deleteContact } from '../api/contact';
-import { FetchContacts } from '../App';
+import { GlobalContext } from '../App';
 import './styles/popupConfirm.scss';
 
 interface Props {
@@ -9,10 +9,11 @@ interface Props {
 }
 
 const PopupConfirm = ({ handlePopupClose, contactId }: Props) => {
-  const getSortedContacts = useContext(FetchContacts);
+  const { getSortedContacts, setAlertStatus } = useContext(GlobalContext);
 
   const handleDelete = () => {
     deleteContact(contactId).then(result => {
+      setAlertStatus(true);
       getSortedContacts();
       return result;
     });

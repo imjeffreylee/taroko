@@ -1,4 +1,6 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState, Fragment, Dispatch, SetStateAction } from 'react';
+import { IconButton, Snackbar } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 
 import './App.css';
 import Contacts from './components/Contacts';
@@ -13,11 +15,17 @@ export interface Contact {
   description: string;
 }
 
-export const FetchContacts = createContext<() => void>(() => { });
+export interface Context {
+  getSortedContacts: () => void;
+  setAlertStatus: Dispatch<SetStateAction<boolean>>;
+}
+
+export const GlobalContext = createContext<Context>({} as Context);
 
 const App = () => {
   const [contacts, setContacts] = useState<Contact[]>();
   const [loading, setLoading] = useState(false);
+  const [alertStatus, setAlertStatus] = useState(false);
 
   const getSortedContacts = () => {
     setLoading(true);
@@ -32,10 +40,28 @@ const App = () => {
 
   return (
     <div className="app">
-      <FetchContacts.Provider value={getSortedContacts}>
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right'
+        }}
+        open={alertStatus}
+        autoHideDuration={5000}
+        onClose={() => setAlertStatus(false)}
+        message="Contacts updated!"
+        action={
+          <Fragment>
+            <IconButton>
+              <CloseIcon />
+            </IconButton>
+          </Fragment>
+        }
+        style={{ fontFamily: '"Pangolin", cursive' }}
+      />
+      <GlobalContext.Provider value={{ getSortedContacts, setAlertStatus }}>
         <Navbar loading={loading} />
         {contacts && <Contacts contactList={contacts} />}
-      </FetchContacts.Provider>
+      </GlobalContext.Provider>
     </div>
   );
 }

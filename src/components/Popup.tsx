@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
+
 import './styles/popup.scss';
 import { createContact, updateContact } from '../api/contact';
 import { CurrentContactInfo } from './ContactItem';
-import { FetchContacts } from '../App';
+import { GlobalContext } from '../App';
 
 interface Props {
   handlePopupClose: (status: boolean) => void;
@@ -16,7 +17,7 @@ const Popup = ({ handlePopupClose, type, id }: Props) => {
   const [job, setJob] = useState('');
   const [description, setDescription] = useState('');
 
-  const getSortedContacts = useContext(FetchContacts);
+  const { getSortedContacts, setAlertStatus } = useContext(GlobalContext);
 
   const {
     firstName: currentFirstName,
@@ -33,6 +34,7 @@ const Popup = ({ handlePopupClose, type, id }: Props) => {
         job,
         description,
       }).then(result => {
+        setAlertStatus(true);
         getSortedContacts();
         return result;
       });
@@ -45,6 +47,7 @@ const Popup = ({ handlePopupClose, type, id }: Props) => {
         job,
         description,
       }).then(result => {
+        setAlertStatus(true);
         getSortedContacts();
         return result;
       });

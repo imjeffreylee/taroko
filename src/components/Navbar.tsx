@@ -1,12 +1,15 @@
 import { useState } from 'react';
-import Loading from './Loading';
 
+import Loading from './Loading';
 import Popup from './Popup';
 import './styles/navbar.css';
+import { createContext } from 'react';
 
 interface Props {
   loading: boolean;
 }
+
+export const SetAlertStatus = createContext(() => { })
 
 const Navbar = ({ loading }: Props) => {
   const [popupStatus, setPopupStatus] = useState(false);
