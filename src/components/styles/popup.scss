@@ -1,0 +1,62 @@
+.popup-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.popup-form {
+  position: relative;
+  padding: 32px;
+  width: 60%;
+  height: 500px;
+  max-width: 640px;
+  background-color: #fff;
+  border: 2px solid #000;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.form-button-group {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+}
+
+.form-container {
+  padding: 24px;
+}
+
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+
+  &-names {
+    @extend .fieldset;
+    width: 49%;
+  }
+
+  &-others {
+    @extend .fieldset;
+    padding: 15px 0;
+    width: 100%;
+  }
+
+  input {
+    height: 32px;
+  }
+}
+
+.full-name {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,39 @@
+.contact-list-container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+}
+
+.contact-list-item {
+  border: 2px solid #000;
+  width: 45%;
+  margin: 20px;
+}
+
+.header-container {
+  position: relative;
+
+  h1 {
+    text-align: center;
+    font-size: 64px;
+    margin-top: 20px;
+  }
+
+  .sort-control {
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    transform: translate(0, -50%);
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    display: flex;
+  }
+
+  img {
+    height: 25px;
+    width: 25px;
+  }
+}
