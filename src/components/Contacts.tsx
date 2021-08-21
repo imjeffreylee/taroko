@@ -2,35 +2,27 @@ import { useEffect, useState } from 'react';
 
 import ContactItem from './ContactItem';
 import './styles/contacts.scss';
-import { getContacts } from '../api/contact';
 import SortImage from '../assets/sort-button.png';
-
-interface Contact {
-  id: number;
-  first_name: string;
-  last_name: string;
-  job: string;
-  description: string;
-}
+import { Contact } from '../App';
 
 type SortDirection = 'asc' | 'desc';
 
-const Contacts = () => {
-  const [contactList, setContactList] = useState<Contact[]>([]);
+interface Props {
+  contactList: Contact[];
+}
+
+const Contacts = ({ contactList }: Props) => {
+  const [sortedList, setSortedList] = useState<Contact[]>([]);
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
   const [sortBy, setSortBy] = useState<keyof Contact>('first_name');
 
   const sortList = (list: Contact[], sortBy: keyof Contact, sortDirection: SortDirection) => {
     if (!list) return;
-    const sortedList = sortDirection === 'asc'
+    const sorted = sortDirection === 'asc'
       ? list.sort((a: Contact, b: Contact) => a[`${sortBy}` as keyof Contact] > b[`${sortBy}` as keyof Contact] ? 1 : -1)
       : list.sort((a: Contact, b: Contact) => a[`${sortBy}` as keyof Contact] < b[`${sortBy}` as keyof Contact] ? 1 : -1);
-    setContactList(sortedList);
+    setSortedList(sorted);
   };
-
-  useEffect(() => {
-    getContacts().then(result => sortList(result, sortBy, sortDirection));
-  }, []);
 
   useEffect(() => {
     sortList(contactList, sortBy, sortDirection);
@@ -42,9 +34,9 @@ const Contacts = () => {
         <h1>Contacts</h1>
         <div className="sort-control">
           <select name="sortBy" onChange={(e) => setSortBy(e.target.value as keyof Contact)}>
-            <option value="first_name">first_name</option>
-            <option value="last_name">last_name</option>
-            <option value="job">job</option>
+            <option value="first_name">First Name</option>
+            <option value="last_name">Last Name</option>
+            <option value="job">Job</option>
           </select>
           <img
             src={SortImage}
@@ -55,11 +47,12 @@ const Contacts = () => {
       </div>
       <ul className="contact-list-container">
         {
-          contactList && contactList.map(({
+          sortedList && sortedList.map(({
             id, first_name, last_name, job, description,
           }) => (
             <li key={id} className="contact-list-item">
               <ContactItem
+                id={id}
                 firstName={first_name}
                 lastName={last_name}
                 job={job}

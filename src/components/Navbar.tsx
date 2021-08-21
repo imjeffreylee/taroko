@@ -9,7 +9,7 @@ const Navbar = () => {
     <div className="nav-container">
       {
         popupStatus && (
-          <Popup handlePopupClose={setPopupStatus} />
+          <Popup handlePopupClose={setPopupStatus} type="create" />
         )
       }
       <nav>
@@ -25,7 +25,7 @@ const Navbar = () => {
       <div>
         <button
           className="button"
-          onClick={() => setPopupStatus(popupStatus ? false : true)}
+          onClick={() => setPopupStatus(true)}
         >
           Add Contact
         </button>
