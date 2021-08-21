@@ -38,7 +38,7 @@
 .fieldset {
   display: flex;
   flex-direction: column;
-  margin: 15px 0;
+  padding: 15px 0;
 
   &-names {
     @extend .fieldset;
@@ -47,7 +47,6 @@
 
   &-others {
     @extend .fieldset;
-    padding: 15px 0;
     width: 100%;
   }
 
@@ -59,4 +58,20 @@
 .full-name {
   display: flex;
   justify-content: space-between;
+}
+
+@media all and (max-width: 550px) {
+  .full-name {
+    display: block;
+  }
+
+  .fieldset-names {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 385px) {
+  .popup-form h1 {
+    font-size: 24px;
+  }
 }

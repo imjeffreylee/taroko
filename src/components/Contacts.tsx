@@ -12,21 +12,29 @@ interface Props {
 }
 
 const Contacts = ({ contactList }: Props) => {
-  const [sortedList, setSortedList] = useState<Contact[]>([]);
+  const [sortedList, setSortedList] = useState<Contact[]>(contactList);
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
   const [sortBy, setSortBy] = useState<keyof Contact>('first_name');
 
   const sortList = (list: Contact[], sortBy: keyof Contact, sortDirection: SortDirection) => {
     if (!list) return;
-    const sorted = sortDirection === 'asc'
-      ? list.sort((a: Contact, b: Contact) => a[`${sortBy}` as keyof Contact] > b[`${sortBy}` as keyof Contact] ? 1 : -1)
-      : list.sort((a: Contact, b: Contact) => a[`${sortBy}` as keyof Contact] < b[`${sortBy}` as keyof Contact] ? 1 : -1);
+
+    const sorted = list.sort((a: Contact, b: Contact) => {
+      const cur = (a[`${sortBy}` as keyof Contact] as string).toLowerCase();
+      const next = (b[`${sortBy}` as keyof Contact] as string).toLowerCase();
+      if (sortDirection === 'asc') {
+        return cur > next ? 1 : -1;
+      } else {
+        return cur < next ? 1 : -1;
+      };
+    });
+
     setSortedList(sorted);
   };
 
   useEffect(() => {
     sortList(contactList, sortBy, sortDirection);
-  }, [contactList, sortBy, sortDirection]);
+  }, [sortBy, sortDirection, contactList]);
 
   return (
     <div>
@@ -41,6 +49,7 @@ const Contacts = ({ contactList }: Props) => {
           <img
             src={SortImage}
             alt="sort"
+            className={sortDirection === 'asc' ? '' : 'rotate'}
             onClick={() => setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}
           />
         </div>

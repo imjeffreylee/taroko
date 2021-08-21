@@ -1,8 +1,14 @@
 import { useState } from 'react';
-import Popup from './Popup';
-import './styles/navbar.css'
+import Loading from './Loading';
 
-const Navbar = () => {
+import Popup from './Popup';
+import './styles/navbar.css';
+
+interface Props {
+  loading: boolean;
+}
+
+const Navbar = ({ loading }: Props) => {
   const [popupStatus, setPopupStatus] = useState(false);
 
   return (
@@ -14,14 +20,12 @@ const Navbar = () => {
       }
       <nav>
         <ul>
-          <li>Contact List</li>
-          <li>Contact List</li>
-          <li>Contact List</li>
-          <li>Contact List</li>
-          <li>Contact List</li>
-          <li>Contact List</li>
+          <li>
+            Contact List
+          </li>
         </ul>
       </nav>
+      {loading && <Loading />}
       <div>
         <button
           className="button"

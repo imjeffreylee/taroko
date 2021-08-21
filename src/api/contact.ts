@@ -17,7 +17,6 @@ export const getContacts = async () => {
 };
 
 export const createContact = async (payload: ContactInfo) => {
-  console.log('here')
   return await axios.post(`${url}/api/contacts`, { contact: { ...payload } })
     .then((response) => response)
     .catch((error) => console.log(error))

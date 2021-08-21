@@ -17,9 +17,13 @@ export const FetchContacts = createContext<() => void>(() => { });
 
 const App = () => {
   const [contacts, setContacts] = useState<Contact[]>();
+  const [loading, setLoading] = useState(false);
 
   const getSortedContacts = () => {
-    getContacts().then(result => setContacts(result));
+    setLoading(true);
+    getContacts()
+      .then(result => setContacts(result))
+      .finally(() => setLoading(false))
   };
 
   useEffect(() => {
@@ -29,7 +33,7 @@ const App = () => {
   return (
     <div className="app">
       <FetchContacts.Provider value={getSortedContacts}>
-        <Navbar />
+        <Navbar loading={loading} />
         {contacts && <Contacts contactList={contacts} />}
       </FetchContacts.Provider>
     </div>

@@ -1,4 +1,4 @@
-import './styles/contactItem.css';
+import './styles/contactItem.scss';
 import PersonIcon from '@material-ui/icons/Person';
 import { createContext, useState } from 'react';
 import PopupConfirm from './PopupConfirm';
